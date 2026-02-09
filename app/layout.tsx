@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ApexRun — The AI-Native Performance Partner",
   description:
-    "ApexRun bridges the gap between social running and AI coaching with a hybrid Flutter + Go + PostGIS architecture. A technical showcase by a performance-obsessed engineer.",
+    "ApexRun bridges the gap between social running and AI coaching with a hybrid Flutter + Go + PostGIS architecture. A technical showcase featuring Claude-inspired warm aesthetics.",
   keywords: ["ApexRun", "AI Running", "Flutter", "Go", "PostGIS", "Gemini", "Portfolio"],
 };
 
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${robotoCondensed.variable} ${geistMono.variable} antialiased`}
       >

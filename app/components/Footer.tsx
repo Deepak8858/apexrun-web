@@ -31,7 +31,7 @@ export default function Footer() {
             <a
               href="/resume.pdf"
               download
-              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-bold text-[#0A0A0A] transition-all hover:bg-accent-dim hover:shadow-[0_0_30px_rgba(204,255,0,0.4)]"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-bold text-[#0A0A0A] transition-all hover:bg-accent-dim hover:shadow-[0_0_30px_rgba(217,119,6,0.4)]"
             >
               <FileText className="h-4 w-4" />
               Download Full PDF Resume
@@ -57,7 +57,7 @@ export default function Footer() {
             <span className="text-sm font-bold text-foreground">
               Apex<span className="text-accent">Run</span>
             </span>
-            <span className="text-xs text-muted">
+            <span className="text-xs text-muted" suppressHydrationWarning>
               &copy; {new Date().getFullYear()}
             </span>
           </div>

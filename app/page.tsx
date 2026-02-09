@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import AppShowcase from "./components/AppShowcase";
 import FeatureGrid from "./components/FeatureGrid";
 import TechBreakdown from "./components/TechBreakdown";
 import RunnerChart from "./components/RunnerChart";
@@ -10,6 +11,7 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
+      <AppShowcase />
       <FeatureGrid />
       <TechBreakdown />
       <RunnerChart />

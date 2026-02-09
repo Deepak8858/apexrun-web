@@ -110,7 +110,7 @@ export default function RunnerChart() {
             </div>
             <div className="flex gap-4">
               {[
-                { color: "#CCFF00", label: "Pace (min/km)" },
+                { color: "#D97706", label: "Pace (min/km)" },
                 { color: "#8B5CF6", label: "Distance (km)" },
                 { color: "#F97316", label: "VO₂ Max" },
               ].map((legend) => (
@@ -134,8 +134,8 @@ export default function RunnerChart() {
               >
                 <defs>
                   <linearGradient id="paceGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#CCFF00" stopOpacity={0.3} />
-                    <stop offset="100%" stopColor="#CCFF00" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#D97706" stopOpacity={0.3} />
+                    <stop offset="100%" stopColor="#D97706" stopOpacity={0} />
                   </linearGradient>
                   <linearGradient id="distGradient" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#8B5CF6" stopOpacity={0.2} />
@@ -166,13 +166,13 @@ export default function RunnerChart() {
                 <Area
                   type="monotone"
                   dataKey="pace"
-                  stroke="#CCFF00"
+                  stroke="#D97706"
                   strokeWidth={2}
                   fill="url(#paceGradient)"
                   dot={false}
                   activeDot={{
                     r: 4,
-                    fill: "#CCFF00",
+                    fill: "#D97706",
                     stroke: "#0A0A0A",
                     strokeWidth: 2,
                   }}

@@ -37,7 +37,7 @@ The site highlights the architecture behind **ApexRun**, a hybrid **Flutter + Go
 | **Visual Metrics** | Recharts AreaChart — 12-week pace/distance/VO₂ max with custom dark tooltip & summary stats |
 | **Footer** | Resume download CTA, LinkedIn, GitHub links |
 
-> **Design System:** `#0A0A0A` background · `#CCFF00` Electric Lime accent · Inter + Roboto Condensed typography
+> **Design System:** `#0A0A0A` background · `#D97706` Claude Orange accent · Inter + Roboto Condensed typography
 
 ---
 
