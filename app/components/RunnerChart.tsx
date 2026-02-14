@@ -9,12 +9,12 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  type TooltipProps,
 } from "recharts";
-import {
-  type NameType,
-  type ValueType,
-} from "recharts/types/component/DefaultTooltipContent";
+type CustomTooltipProps = {
+  active?: boolean;
+  payload?: Array<{ value: string | number }>;
+  label?: string;
+};
 
 const weeklyData = [
   { week: "W1", pace: 5.42, distance: 18, vo2max: 42.1 },
@@ -35,7 +35,7 @@ function CustomTooltip({
   active,
   payload,
   label,
-}: TooltipProps<ValueType, NameType>) {
+}: CustomTooltipProps) {
   if (!active || !payload?.length) return null;
   return (
     <div className="rounded-lg border border-border bg-surface p-3 shadow-xl">

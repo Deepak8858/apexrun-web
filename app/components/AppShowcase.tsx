@@ -445,7 +445,7 @@ export default function AppShowcase() {
                       initial={{ width: "0%" }}
                       animate={{ width: "100%" }}
                       transition={{ duration: AUTOPLAY_INTERVAL / 1000, ease: "linear" }}
-                      key={`progress-${activeIndex}-${Date.now()}`}
+                      key={`progress-${activeIndex}`}
                     />
                   ) : (
                     <div
