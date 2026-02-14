@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Activity, Github, Linkedin, FileText, Mail, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -28,7 +29,7 @@ export default function Footer() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <a
+            <Link
               href="/resume.pdf"
               download
               className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-bold text-[#0A0A0A] transition-all hover:bg-accent-dim hover:shadow-[0_0_30px_rgba(217,119,6,0.4)]"
@@ -36,7 +37,7 @@ export default function Footer() {
               <FileText className="h-4 w-4" />
               Download Full PDF Resume
               <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-            </a>
+            </Link>
             <a
               href="mailto:hello@example.com"
               className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-all hover:border-accent/50 hover:bg-surface"
