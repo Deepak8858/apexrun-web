@@ -1,0 +1,49 @@
+name: CI/CD to DigitalOcean
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: deploy-digitalocean-production
+  cancel-in-progress: true
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build
+  deploy:
+    needs: ci
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      APP_NAME: apexrun-web
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+      - name: Create or update App Platform app
+        shell: bash
+        run: |
+          APP_ID="$(doctl apps list --format ID,Spec.Name --no-header | awk -v app="$APP_NAME" '$2==app {print $1; exit}')"
+          if [ -n "$APP_ID" ]; then
+            doctl apps update "$APP_ID" --spec app.yaml --wait
+          else
+            doctl apps create --spec app.yaml --wait
+          fi

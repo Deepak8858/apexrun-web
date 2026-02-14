@@ -1,0 +1,22 @@
+name: apexrun-web
+region: nyc
+domains:
+  - domain: deepakdev.me
+    type: PRIMARY
+  - domain: www.deepakdev.me
+    type: ALIAS
+services:
+  - name: web
+    github:
+      repo: Deepak8858/apexrun-web
+      branch: main
+      deploy_on_push: false
+    source_dir: /
+    environment_slug: node-js
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    build_command: npm run build
+    run_command: npm run start -- --port 8080
+    http_port: 8080
+    routes:
+      - path: /

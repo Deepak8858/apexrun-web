@@ -119,6 +119,36 @@ npm run build
 npm start
 ```
 
+### CI/CD to DigitalOcean (App Platform)
+
+This repo now includes a GitHub Actions pipeline at `.github/workflows/deploy-digitalocean.yml`:
+
+- Push to `main` → runs `npm ci`, `npm run lint`, `npm run build`
+- If CI passes, deploys to DigitalOcean App Platform using `app.yaml`
+- Creates the app if it does not exist, otherwise updates the existing app
+
+#### Required GitHub secret
+
+- `DIGITALOCEAN_ACCESS_TOKEN` (Personal Access Token with App Platform read/write access)
+
+#### Domain: `deepakdev.me` (Namecheap)
+
+`app.yaml` already includes:
+
+- `deepakdev.me` as `PRIMARY`
+- `www.deepakdev.me` as `ALIAS`
+
+After the first successful deploy, get your app ingress domain:
+
+```bash
+doctl apps list --format ID,Spec.Name,DefaultIngress
+```
+
+Then in Namecheap Advanced DNS, add/update:
+
+- `CNAME` host `www` → `YOUR_APP_DEFAULT_INGRESS`
+- `CNAME` host `@` → `YOUR_APP_DEFAULT_INGRESS` (if Namecheap UI does not allow this for apex, use URL redirect from `@` to `https://www.deepakdev.me`)
+
 ---
 
 ## 🛠️ Tech Stack
@@ -132,7 +162,7 @@ npm start
 | **Charts** | Recharts | Runner progress visualization |
 | **Icons** | Lucide React | Consistent technical iconography |
 | **Fonts** | Inter + Roboto Condensed | Body + data metric typography |
-| **Deploy** | Vercel | Edge-optimized hosting |
+| **Deploy** | DigitalOcean App Platform | Managed app hosting with GitHub Actions CI/CD |
 
 ---
 
