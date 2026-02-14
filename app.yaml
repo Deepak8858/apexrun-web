@@ -1,9 +1,9 @@
 name: apexrun-web
 region: nyc
 domains:
-  - domain: deepakdev.me
+  - domain: devdeepak.me
     type: PRIMARY
-  - domain: www.deepakdev.me
+  - domain: www.devdeepak.me
     type: ALIAS
 services:
   - name: web

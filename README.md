@@ -131,12 +131,12 @@ This repo now includes a GitHub Actions pipeline at `.github/workflows/deploy-di
 
 - `DIGITALOCEAN_ACCESS_TOKEN` (Personal Access Token with App Platform read/write access)
 
-#### Domain: `deepakdev.me` (Namecheap)
+#### Domain: `devdeepak.me` (Namecheap)
 
 `app.yaml` already includes:
 
-- `deepakdev.me` as `PRIMARY`
-- `www.deepakdev.me` as `ALIAS`
+- `devdeepak.me` as `PRIMARY`
+- `www.devdeepak.me` as `ALIAS`
 
 After the first successful deploy, get your app ingress domain:
 
@@ -147,7 +147,7 @@ doctl apps list --format ID,Spec.Name,DefaultIngress
 Then in Namecheap Advanced DNS, add/update:
 
 - `CNAME` host `www` → `YOUR_APP_DEFAULT_INGRESS`
-- `CNAME` host `@` → `YOUR_APP_DEFAULT_INGRESS` (if Namecheap UI does not allow this for apex, use URL redirect from `@` to `https://www.deepakdev.me`)
+- `CNAME` host `@` → `YOUR_APP_DEFAULT_INGRESS` (if Namecheap UI does not allow this for apex, use URL redirect from `@` to `https://www.devdeepak.me`)
 
 ---
 
