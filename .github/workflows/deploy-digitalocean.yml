@@ -28,7 +28,7 @@ jobs:
         run: npm run build
   deploy:
     needs: ci
-    if: github.ref == 'refs/heads/main' && vars.DO_DEPLOY_ENABLED == 'true'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
@@ -36,15 +36,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - name: Validate deploy prerequisites
         shell: bash
         run: |
           if [ -z "${DIGITALOCEAN_ACCESS_TOKEN}" ]; then
             echo "::error title=Missing secret::DIGITALOCEAN_ACCESS_TOKEN is not set."
+            exit 1
+          fi
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Validate DigitalOcean account status
+        shell: bash
+        run: |
+          ACCOUNT_STATUS="$(doctl account get --format Status --no-header | tr -d '[:space:]')"
+          if [ "${ACCOUNT_STATUS}" != "active" ]; then
+            echo "::error title=DigitalOcean account not active::Current status is '${ACCOUNT_STATUS}'. Please unlock your DigitalOcean team/account before deployment."
             exit 1
           fi
       - name: Validate app spec
