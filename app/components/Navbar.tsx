@@ -33,7 +33,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
+        <a href="/" className="flex items-center gap-2 group">
           <Activity className="h-6 w-6 text-accent transition-transform group-hover:scale-110" />
           <span className="text-lg font-bold tracking-tight text-foreground">
             Apex<span className="text-accent">Run</span>
